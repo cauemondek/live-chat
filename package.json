@@ -1,0 +1,14 @@
+{
+  "name": "livechat",
+  "version": "1.0.0",
+  "description": "A real time chat",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cauê Guise Mondek",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.2.2"
+  }
+}
