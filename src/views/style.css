@@ -1,6 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     border: 0;
     text-decoration: none;
+    /* border: 1px solid red; */
+    font-family: 'Montserrat';
+}
+
+body {
+    background-color: #0a194a;
+}
+
+.login-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.initial-box {
+    width: 1400px;
+    height: 600px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.initial-box h2 {
+    color: #fff;
+    font-size: 30px;
+}
+
+.initial-box label {
+    color: #5a76a5;
+}
+
+.initial-box img {
+    width: 40%;
+}
+
+.login-box {
+    width: 500px;
+    height: 400px;
+
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.login {
+    width: 400px;
+    height: 200px;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+}
+
+.login button {
+    padding: 10px;
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #3223b1, #7236fb);
+    color: #fff;
+
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.login button:hover {
+    scale: 1.02;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.input-form input {
+    width: 280px;
+    
+    padding: 10px 40px;
+    background-color: transparent;
+    border-radius: 8px;
+    font-size: 19px;
+    border: solid 1px #fff;
+    z-index: 1;
+
+    outline: none;
+
+    color: #fff;
+    caret-color: #5a76a5;
+}
+
+.input-form i {
+    left: 12px;
+    position: absolute;
+    color: #7236fb;
+}
+
+.input-form label {
+    top: 11px;
+    left: 45px;
+    position: absolute;
+    font-size: 19px;
+    z-index: -1;
+    transition: .4s ease-in-out;
+}
+
+.input-form input:focus ~ label, 
+.input-form input:valid ~ label {
+    font-size: 14px;
+    top: -20px;
+    left: 0;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+    justify-content: end;
+    align-items: center;
+
+}
+
+
+
+.groups-container {
+    height: 100%;
+    width: 500px;
+    border-right: 1px solid #1b2956;
+}
+
+.group-message, .send-message-container {
+    padding: 20px;
+    width: 1200px;
+    z-index: 1;
+}
+
+.group-message {
+    border-bottom: 1px solid #1b2956;
+    height: 20px;
+}
+
+.send-message-container {
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.output-message {
+    height: 740px;
+    width: 1200px;
+    padding: 20px 30px;
+    z-index: -1;
+    border-bottom: 1px solid  #1b2956;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+
+
+.message {
+    margin-top: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: #fff;
+}
+
+.inbox {
+    margin-top: 24px;
+    display: flex;
+}
+
+.user-inbox {
+    justify-content: end;
+}
+
+.msg-header {
+    background-color: #7236fb;
+    padding: 12px 10px;
+    border-radius: 10px;
+    max-width: 35%;
+    width: max-content;
+}
+
+.user-msg-header {
+    background-color: #3223b1;
+}
+
+.input-message {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.send-message-container input {
+    width: 500px;
+    padding: 12px 44px 12px 14px;
+    font-size: 17px;
+    border-radius: 22px;
+    outline: none;
+    background-color: #1b2956;
+    color: #fff;
+    caret-color: #5a76a5;
+} 
+
+#submit-message {
+    position: absolute;
+    right: 0;
+    margin-right: 14px;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s ease-in;
+    color: #7236fb;
+
+}
+
+.send-message-container input:valid ~ #submit-message {
+    visibility: visible;
+    opacity: 1;
+}
+
+.msg-header-ani {
+    animation: message .3s ease-out;
+}
+.msg-header-ani-user {
+    animation: user-message .3s ease-out;
+}
+
+@keyframes message {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes user-message {
+    from {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }

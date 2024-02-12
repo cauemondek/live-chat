@@ -6,21 +6,51 @@
     <title>Live Chat</title>
 
     <link rel="stylesheet" href="./style.css">
+
+    <script src="https://kit.fontawesome.com/dc49a974a4.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-
-    <div>
-        
+    <div class="login-container">
+        <div class="initial-box">
+            <img src="./imgs/chatilu.svg" alt="">
+            <div class="login-box">
+                <h2>Conecte-se agora e fale com novas pessoas em <span style="color: #7236fb;">tempo real</span></h2>
+                <div class="login">
+                    <div class="input-form">
+                        <input type="text" required id="userName">
+                        <label>Insira um nome</label>
+                        <i class="fa-solid fa-user fa-lg"></i>
+                    </div>
+                    <button id="connect">Entrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <main>
-        <input type="text" id="message">
-        <button id="submitMessage">Enviar</button>
-        <div class="outputMessage">
-    
+    <main id="chat-display">
+        <div class="groups-container">
+
+        </div>
+        <div class="chat-container">
+            <div class="group-message">
+
+            </div>
+            <div class="output-message">
+               
+            </div>
+            <div class="send-message-container">
+                <div class="input-message">
+                    <input type="text" id="message" required placeholder="Escreva uma mensagem...">
+                    <i class="fa-solid fa-paper-plane fa-xl" id="submit-message"></i>
+                </div>
+            </div>
+            
         </div>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
 </body>
 </html>
