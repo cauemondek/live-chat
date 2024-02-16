@@ -16,34 +16,38 @@ $(document).ready(() => {
   }
 
   let user;
-
   $("#connect").on("click", () => {
-    $(".login-container").hide();
-    $("#chat-display").css("display", "flex");
-    user = {
-      name: $("#userName").val(),
-      color: randomColor(),
-      // id:
-    };
+    if ($("#userName").val() != "" && $("#userName").val().length > 3) {
+      $(".login-container").hide();
+      $("#chat-display").css("display", "flex");
+
+      user = {
+        id: userID,
+        name: $("#userName").val(),
+        color: randomColor(),
+      };
+      // Enviando para o servidor novo usuario
+
+      let sendNewUser = {
+        newUserConnect: [user.id, user.name],
+      };
+      ws.send(JSON.stringify(sendNewUser));
+      
+    } else {
+      alert("Seu nome deve possuir mais de 3 caracteres");
+    }
   });
 
   const output = $(".output-message");
-
   let message = $("#message");
 
-  let storageMessage = {
-    user: undefined,
-    userColor: undefined,
-    message: undefined,
-  };
   function sendMessage() {
     let messageValues = {
+      id: user.id,
       user: user.name,
       userColor: user.color,
       message: message.val(),
     };
-
-    storageMessage = messageValues;
 
     ws.send(JSON.stringify(messageValues));
 
@@ -60,19 +64,35 @@ $(document).ready(() => {
     }
   });
 
+  let userID;
   const processMessage = ({ data }) => {
     const dataMessage = JSON.parse(data);
-    if (
-      storageMessage.message !== dataMessage.message &&
-      storageMessage.user !== dataMessage.user
-    ) {
-      createMessage(
-        dataMessage.message,
-        false,
-        dataMessage.user,
-        dataMessage.userColor
-      );
-      output.scrollTop(10000000000000);
+
+    if (dataMessage.newClient) {
+      switch (dataMessage.newClient) {
+        case user.id:
+          break;
+
+        default:
+          console.log("New client: " + dataMessage.newClient);
+          break;
+      }
+    } else if (dataMessage.desconectClient) {
+      console.log("Client desconectado: " + dataMessage.desconectClient);
+    } else if (dataMessage.clientID) {
+      userID = dataMessage.clientID;
+    } else {
+      if (user.id != dataMessage.id) {
+        $("#notification").prop("volume", 0.4);
+        $("#notification").trigger("play");
+        createMessage(
+          dataMessage.message,
+          false,
+          dataMessage.user,
+          dataMessage.userColor
+        );
+        output.scrollTop(10000000000000);
+      }
     }
   };
 

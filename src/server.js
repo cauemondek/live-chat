@@ -4,42 +4,56 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-let clientsOn = [];
-
-let verifyClients = setInterval(() => {
-  console.log(clientsOn);
-}, 5000);
+let onlineClientsID = {};
 
 const wss = new WebSocketServer({ port: process.env.PORT || 3000 });
 
 wss.on("connection", (ws, req) => {
-  const ipClient = req.socket.remoteAddress;
-
+  
   ws.id = crypto.randomUUID();
-
+  
   ws.on("error", console.error);
-
+  
   ws.on("message", (data, isBinary) => {
-    wss.clients.forEach((client) => {
-      client.send(data, { binary: isBinary });
-      console.log(`Received message ${data} from user ${client.id}`);
-    });
-  });
+    // onlineClientsID[ws.id].send('test')
+    let message = JSON.parse(data)
+    if (message.newUserConnect[0] == ws.id) {
+      ws.username = message.newUserConnect[1]
 
-  console.log("New Client Connected: " + ipClient);
-  wss.clients.forEach((client) => {
-    console.log("Client.ID: " + client.id);
-    if (!clientsOn.find((element) => element == client.id)) {
-      clientsOn.push(client.id);
+      const entryClient = {
+        newClientName: ws.username,
+      };
+      wss.clients.forEach((client) => {
+        client.send(JSON.stringify(entryClient));
+      });
+    } else {
+      wss.clients.forEach((client) => {
+        client.send(data, { binary: isBinary });
+      });
     }
   });
+  
+  console.log("Conectou Client.ID: " + ws.id);
+
+  onlineClientsID[ws.id] = ws;
+  
+  const myID = {
+    clientID: ws.id,
+  };
+  ws.send(JSON.stringify(myID));
 
   ws.on("close", (data) => {
-    console.log("Client Disconnected: " + ipClient);
+    console.log("Desconectou Client.ID: " + ws.id);
+
+    const desconectClient = {
+      desconectClient: ws.id,
+    };
+
     wss.clients.forEach((client) => {
-      console.log("Client.ID: " + client.id);
-      clientsOn = clientsOn.filter((element) => element == client.id);
+      client.send(JSON.stringify(desconectClient));
     });
-    // wss.close();
+
+    // onlineClients = onlineClients.filter((element) => element !== ws.id);
+    delete onlineClientsID[ws.id]
   });
 });
