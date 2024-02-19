@@ -17,7 +17,11 @@ $(document).ready(() => {
 
   let user;
   $("#connect").on("click", () => {
-    if ($("#userName").val() != "" && $("#userName").val().length > 3) {
+    if (
+      $("#userName").val() != "" &&
+      $("#userName").val().length > 2 &&
+      $("#userName").val().length < 16
+    ) {
       $(".login-container").hide();
       $("#chat-display").css("display", "flex");
 
@@ -29,12 +33,11 @@ $(document).ready(() => {
       // Enviando para o servidor novo usuario
 
       let sendNewUser = {
-        newUserConnect: [user.id, user.name],
+        newClientConnect: [user.id, user.name],
       };
       ws.send(JSON.stringify(sendNewUser));
-      
     } else {
-      alert("Seu nome deve possuir mais de 3 caracteres");
+      alert("Seu nome deve possuir mais de 3 caracteres e menos que 16");
     }
   });
 
@@ -42,6 +45,7 @@ $(document).ready(() => {
   let message = $("#message");
 
   function sendMessage() {
+    // Envia uma mensagem com os dados do usuário que enviou junto com o conteúdo
     let messageValues = {
       id: user.id,
       user: user.name,
@@ -68,23 +72,30 @@ $(document).ready(() => {
   const processMessage = ({ data }) => {
     const dataMessage = JSON.parse(data);
 
-    if (dataMessage.newClient) {
-      switch (dataMessage.newClient) {
-        case user.id:
+    if (dataMessage.newClientValor) {
+      // Notifica os usuários sobre a conexão de um client
+      switch (dataMessage.newClientValor[0]) {
+        case user.id: // Caso seja a conexão do próprio client do usuário não faz nada
           break;
-
-        default:
-          console.log("New client: " + dataMessage.newClient);
+        default: // Caso seja o client de outro usuário notifica a entrada de um novo usuário
+          $("#entryNotify").prop("volume", 0.6);
+          $("#entryNotify").trigger("play");
+          connectionNotify(dataMessage.newClientValor[1], true);
           break;
       }
     } else if (dataMessage.desconectClient) {
-      console.log("Client desconectado: " + dataMessage.desconectClient);
+      // Notifica os usuários sobre a desconexão de um client
+      $("#leftNotify").prop("volume", 0.4);
+      $("#leftNotify").trigger("play");
+      connectionNotify(dataMessage.desconectClient, false);
     } else if (dataMessage.clientID) {
+      // Salva o ID do próprio user na página frontend
       userID = dataMessage.clientID;
     } else {
       if (user.id != dataMessage.id) {
-        $("#notification").prop("volume", 0.4);
-        $("#notification").trigger("play");
+        // Envia uma mensagem de texto para todos os usuários (exceto quem enviou)
+        $("#messageNotify").prop("volume", 0.3);
+        $("#messageNotify").trigger("play");
         createMessage(
           dataMessage.message,
           false,
@@ -98,10 +109,35 @@ $(document).ready(() => {
 
   ws.onmessage = processMessage;
 
+  function connectionNotify(name, entry) {
+    // Cria uma notificação de conexão entrada/saída
+    let container = document.createElement("div");
+    let connection = document.createElement("div");
+    let username = document.createElement("p");
+    let comp = document.createElement("p");
+
+    $(container).addClass("new-connection-container");
+    $(connection).addClass("connection");
+    $(username).addClass("userConnected");
+
+    username.innerHTML = name;
+    if (entry == true) {
+      comp.innerHTML = "se juntou a conversa";
+    } else {
+      comp.innerHTML = "saiu da conversa";
+    }
+
+    output.append(container);
+    container.append(connection);
+    connection.append(username);
+    connection.append(comp);
+  }
+
   function createMessage(content, client, name, color) {
+    // Cria uma mensagem
     let inbox = document.createElement("div");
     let msgHeader = document.createElement("div");
-    let userName = document.createElement("h4");
+    let username = document.createElement("h4");
     let message = document.createElement("p");
 
     message.innerHTML = content;
@@ -114,17 +150,17 @@ $(document).ready(() => {
       $(inbox).addClass("user-inbox");
       $(msgHeader).addClass("user-msg-header");
       $(msgHeader).addClass("msg-header-ani-user");
-      userName.innerHTML = user.name;
-      $(userName).css("color", user.color);
+      username.innerHTML = user.name;
+      $(username).css("color", user.color);
     } else {
       $(msgHeader).addClass("msg-header-ani");
-      userName.innerHTML = name;
-      $(userName).css("color", color);
+      username.innerHTML = name;
+      $(username).css("color", color);
     }
 
     output.append(inbox);
     inbox.append(msgHeader);
-    msgHeader.append(userName);
+    msgHeader.append(username);
     msgHeader.append(message);
   }
 });
