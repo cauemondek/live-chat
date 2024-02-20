@@ -35,7 +35,11 @@ $(document).ready(() => {
       let sendNewUser = {
         newClientConnect: [user.id, user.name],
       };
+      let reqUserList = {
+        reqUserList: user.id,
+      };
       ws.send(JSON.stringify(sendNewUser));
+      ws.send(JSON.stringify(reqUserList));
     } else {
       alert("Seu nome deve possuir mais de 3 caracteres e menos que 16");
     }
@@ -78,8 +82,9 @@ $(document).ready(() => {
         case user.id: // Caso seja a conexão do próprio client do usuário não faz nada
           break;
         default: // Caso seja o client de outro usuário notifica a entrada de um novo usuário
-          $("#entryNotify").prop("volume", 0.6);
+          $("#entryNotify").prop("volume", 0.45);
           $("#entryNotify").trigger("play");
+          userStatus(dataMessage.newClientValor[1], true);
           connectionNotify(dataMessage.newClientValor[1], true);
           break;
       }
@@ -87,10 +92,16 @@ $(document).ready(() => {
       // Notifica os usuários sobre a desconexão de um client
       $("#leftNotify").prop("volume", 0.4);
       $("#leftNotify").trigger("play");
+      userStatus(dataMessage.desconectClient, false);
       connectionNotify(dataMessage.desconectClient, false);
     } else if (dataMessage.clientID) {
       // Salva o ID do próprio user na página frontend
       userID = dataMessage.clientID;
+    } else if (dataMessage.resUserList) {
+      // Recebe a resposta da requisição de lista de usuários online
+      for (let i = 0; i < dataMessage.resUserList.length; i++) {
+        userStatus(dataMessage.resUserList[i], true);
+      }
     } else {
       if (user.id != dataMessage.id) {
         // Envia uma mensagem de texto para todos os usuários (exceto quem enviou)
@@ -164,3 +175,15 @@ $(document).ready(() => {
     msgHeader.append(message);
   }
 });
+
+function userStatus(name, status) {
+  if (status == true) {
+    let username = document.createElement("p");
+    username.innerHTML = name + ",";
+
+    $(username).attr("online", name + "STATUS");
+    $(".group-members").append(username);
+  } else {
+    $("[online=" + name + "STATUS]").remove();
+  }
+}

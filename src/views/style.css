@@ -13,6 +13,17 @@ body {
     background-color: #0a194a;
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #6320ff;
+    border-radius: 6px;
+}
+
 .login-container {
     width: 100%;
     height: 100vh;
@@ -152,8 +163,10 @@ main {
 }
 
 .group-message {
-    border-bottom: 1px solid #1b2956;
     height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .send-message-container {
@@ -169,6 +182,7 @@ main {
     padding: 20px 30px;
     z-index: -1;
     border-bottom: 1px solid  #1b2956;
+    border-top: 1px solid  #1b2956;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -312,4 +326,35 @@ main {
         scale: 1;
 
     }
+}
+
+.group-name {
+    display: flex;
+    align-items: center;
+    width: 155px;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.group-members {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.group-members p:nth-child(1) {
+    font-weight: 600;
+    color: #8f5fff;
+}
+.group-members p {
+    font-size: 15px;
+    margin-right: 5px;
+}
+.group-members p[online] {
+    color: #7a90b6;
+}
+
+
+.group-name h3, .group-name i {
+    color: #5a76a5;
 }
