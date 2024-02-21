@@ -2,3 +2,9 @@
 
 <h1 align="center">Live Chat</h1>
 <p align="center">A real time chat.</p>
+
+## 🔨 Built with
+- ``HTML/CSS``
+- ``JQuery``
+- ``NodeJS``
+- ``WebSocket``
