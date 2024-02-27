@@ -31,7 +31,8 @@
     <main id="chat-display">
         <div class="groups-container">
             <div class="profile-container">
-                <img src="./imgs/avatar.svg" alt="avatarIMG">
+                <i class="fa-solid fa-ellipsis fa-2xl" id="openOptions"></i>
+                <img src="./imgs/avatarA.svg" alt="avatarIMG" id="picProfileDetails">
                 <div class="profile-details">
                     <h3 id="profileName"></h3>
                     <p id="profileID"></p>
@@ -66,6 +67,16 @@
             
         </div>
     </main>
+
+    <div class="avatar-options-container">
+        <span class="blur"></span>
+        <div class="avatar-options">
+            <img src="./imgs/avatarA.svg" class="avatarButton" alt="">
+            <img src="./imgs/avatarB.svg" class="avatarButton" alt="">
+            <img src="./imgs/avatarC.svg" class="avatarButton" alt="">
+            <img src="./imgs/avatarD.svg" class="avatarButton" alt="">
+        </div>
+    </div>
 
     <audio id="messageNotify">
         <source src="./sounds/messageNotify.mp3" type="audio/mp3">

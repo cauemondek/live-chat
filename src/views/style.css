@@ -284,14 +284,16 @@ main {
     background-color: #6320ff;
     border-radius: 12px;
     padding: 3px 20px;
+    
     justify-content: center;
     align-items: center;
     display: flex;
+
     max-width: 450px;
     min-width: 300px;
     width: max-content;
 
-    opacity: .6;
+    opacity: .8;
 
     animation: newConnection .8s;
 }
@@ -303,8 +305,9 @@ main {
 }
 
 .userConnected {
-    font-size: 16px;
     color: #e4e4e4;
+    
+    font-size: 16px;
     margin-right: 5.2px;
     font-weight: 600;
 }
@@ -323,8 +326,9 @@ main {
 .group-name {
     display: flex;
     align-items: center;
-    width: 155px;
     justify-content: space-between;
+
+    width: 155px;
     margin-bottom: 3px;
 }
 
@@ -343,18 +347,18 @@ main {
     margin-right: 5px;
 }
 .group-members p[online] {
-    color: #7a90b6;
+    color: #8aa2ca;
 }
 
-
 .group-name h3, .group-name i {
-    color: #5a76a5;
+    color: #92a8ce;
 }
 
 .groups-container {
     height: 912px;
     padding: 20px;
     width: 753px;
+
     border-right: 1px solid #1b2956;
     background-color: #0c1b50;
     
@@ -369,9 +373,12 @@ main {
     background-color: #3223b1;
     border-radius: 8px;
     margin-bottom: 50px;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    position: relative;
 }
 
 .profile-container img {
@@ -406,15 +413,18 @@ main {
     list-style: none;
     background-color: #3223b1;
     color: #fff;
+
     height: 80px;
     border-radius: 12px;
     width: 560px;
     padding: 5px 30px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: .4s ease-in-out;
+
+    transition: .3s ease-in-out;
 }
 .groups-container ul li h2 {
     font-size: 26px;
@@ -428,3 +438,56 @@ main {
 .groups-container ul li .fa-earth-americas {
     scale: 1.5;
 }
+
+.profile-container .fa-ellipsis {
+    position: absolute;
+    color: #7756c5;
+
+    right: 0;
+    top: 0;
+
+    margin: 25px 20px 0 0;
+
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+.profile-container .fa-ellipsis:hover {
+    color: #fff;
+}
+
+.avatar-options-container {
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.avatar-options-container .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009c;
+}
+
+.avatar-options {
+    display: flex;
+    width: 900px;
+    z-index: 1;
+    justify-content: space-between;
+}
+.avatar-options img {
+    transition: .35s ease-out;
+    border-radius: 50%;
+    width: 20%;
+    cursor: pointer;
+}
+.avatar-options:hover > :not(:hover) {
+    opacity: .4;
+    transform: scale(0.9);
+}
+
