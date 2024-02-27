@@ -40,6 +40,13 @@ $(document).ready(() => {
       };
       ws.send(JSON.stringify(sendNewUser));
       ws.send(JSON.stringify(reqUserList));
+
+      $("#profileName").text(user.name);
+      $("#profileID").text("ID: " + user.id);
+
+      $("#entryNotify").prop("volume", 0.45);
+      $("#entryNotify").trigger("play");
+      connectionNotify(user.name, true);
     } else {
       alert("Seu nome deve possuir mais de 3 caracteres e menos que 16");
     }
@@ -174,16 +181,16 @@ $(document).ready(() => {
     msgHeader.append(username);
     msgHeader.append(message);
   }
-});
 
-function userStatus(name, status) {
-  if (status == true) {
-    let username = document.createElement("p");
-    username.innerHTML = name + ",";
+  function userStatus(name, status) {
+    if (status == true) {
+      let username = document.createElement("p");
+      username.innerHTML = name + ",";
 
-    $(username).attr("online", name + "STATUS");
-    $(".group-members").append(username);
-  } else {
-    $("[online=" + name + "STATUS]").remove();
+      $(username).attr("online", name + "STATUS");
+      $(".group-members").append(username);
+    } else {
+      $("[online=" + name + "STATUS]").remove();
+    }
   }
-}
+});

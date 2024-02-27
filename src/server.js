@@ -17,7 +17,7 @@ wss.on("connection", (ws, req) => {
   ws.on("error", console.error);
 
   ws.on("message", (data, isBinary) => {
-    // onlineClientsUsername[ws.username].send('test')
+    // onlineClientsUsername[ws.username].send('test') for private message
     let message = JSON.parse(data);
 
     if (message.newClientConnect) {
