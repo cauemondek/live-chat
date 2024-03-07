@@ -1,0 +1,23 @@
+@media only screen and (max-width: 414px){ /* Mobile 1*/
+    /* Design frame: 375px */
+    
+}
+
+@media only screen and (max-width: 600px) and (min-width: 415px){ /* Mobile 2 */
+    /* Design frame: 510px */
+
+}
+
+@media only screen and (max-width: 1279px) and (min-width: 601px){ /* Tablet */
+    /* Design frame: 768px */
+
+}
+
+@media only screen and (max-width: 1366px) and (min-width: 1280px){ /* Small desktop */
+    /* Design frame: 1280px */
+
+}
+@media only screen and (max-width: 1760px) and (min-width: 1280px){ /* Small desktop */
+    /* Design frame: 1280px */
+
+}

@@ -7,6 +7,7 @@
     text-decoration: none;
     /* border: 1px solid red; */
     font-family: 'Montserrat';
+    list-style: none;
 }
 
 body {
@@ -70,6 +71,7 @@ body {
 .login {
     width: 400px;
     height: 200px;
+
     align-items: center;
     justify-content: space-evenly;
     display: flex;
@@ -82,6 +84,7 @@ body {
     height: 50px;
     font-size: 18px;
     border-radius: 6px;
+    
     background: linear-gradient(90deg, #3223b1, #7236fb);
     color: #fff;
 
@@ -126,7 +129,9 @@ body {
 .input-form label {
     top: 11px;
     left: 45px;
+
     position: absolute;
+    
     font-size: 19px;
     z-index: -1;
     transition: .4s ease-in-out;
@@ -137,4 +142,23 @@ body {
     font-size: 14px;
     top: -20px;
     left: 0;
+}
+
+footer {
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+
+    bottom: 0;
+    opacity: 0.5;
+}
+
+footer p, footer span {
+    cursor: default;
+    color: #ffffffaf;
+    font-weight: 100;
+    user-select: none;
 }

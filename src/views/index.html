@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Chat</title>
-
+    
+    <script src="https://kit.fontawesome.com/dc49a974a4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/responsive.css">
-
-    <script src="https://kit.fontawesome.com/dc49a974a4.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -31,23 +30,52 @@
     </div>
 
     <main id="chat-display">
-        <div class="groups-container">
-            <div class="profile-container">
-                <i class="fa-solid fa-ellipsis fa-2xl" id="openOptions"></i>
-                <img src="./imgs/avatarA.svg" alt="avatarIMG" id="picProfileDetails">
-                <div class="profile-details">
-                    <h3 id="profileName"></h3>
-                    <p id="profileID"></p>
-                </div>
-            </div>
+        <nav class="navbar" id="navBar">
             <ul>
                 <li>
-                    <i class="fa-solid fa-earth-americas fa-2xl"></i>
-                    <h2>Chat público</h2>
-                    <i class="fa-solid fa-chevron-right fa-2xl"></i>
+                    <div class="profile-container">
+                        <img src="./imgs/avatarA.svg" alt="avatarIMG" id="picProfileDetails">
+                        <div class="profile-details">
+                            <h3 id="profileName"></h3>
+                            <p id="profileID"></p>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="line">
+                        <hr>
+                        <p>Chat</p>
+                        <hr>
+                    </div>
+                </li>
+                <li class="group-container">
+                    <div class="button-container group">
+                        <i class="fa-solid fa-earth-americas navIcon"></i>
+                        <span class="navItem">Público</span>
+                        <i class="fa-solid fa-chevron-right fa-lg"></i>
+                    </div>
+                    <div class="button-container group" onclick="alert('Função ainda não disponível')">
+                        <i class="fa-solid fa-lock navIcon"></i>
+                        <span class="navItem">Privado</span>
+                        <i class="fa-solid fa-chevron-right fa-lg"></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </li>
+
+                <li class="button-container more" id="openOptions">
+                    <div>
+                        <i class="fa-solid fa-ellipsis fa-2xl navIcon"></i>
+                        <span class="navItem">Mais opções</span>
+                    </div>
                 </li>
             </ul>
-        </div>
+
+        </nav>
         <div class="chat-container">
             <div class="group-message">
                 <div class="group-name">
@@ -79,6 +107,10 @@
             <img src="./imgs/avatarD.svg" class="avatarButton" alt="">
         </div>
     </div>
+
+    <footer>
+        <p>&copy; Cauê Guise Mondek - Todos os direitos reservados, <span id="ano"></span></p>
+    </footer>
 
     <audio id="messageNotify">
         <source src="./sounds/messageNotify.mp3" type="audio/mp3">
