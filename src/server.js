@@ -52,14 +52,16 @@ wss.on("connection", (ws, req) => {
   ws.on("close", (data) => {
     console.log("Desconectou Client.ID: " + ws.id);
 
-    const desconectClient = {
-      desconectClient: ws.username,
-    };
+    if (ws.username) {
+      const desconectClient = {
+        desconectClient: ws.username,
+      };
 
-    wss.clients.forEach((client) => {
-      client.send(JSON.stringify(desconectClient));
-    });
+      wss.clients.forEach((client) => {
+        client.send(JSON.stringify(desconectClient));
+      });
 
-    delete onlineClientsUsername[ws.username];
+      delete onlineClientsUsername[ws.username];
+    }
   });
 });
