@@ -19,10 +19,12 @@ $("#connect").on("click", () => {
   if (
     $("#userName").val() != "" &&
     $("#userName").val().length > 2 &&
-    $("#userName").val().length < 16
+    $("#userName").val().length < 13
   ) {
     $(".login-container").hide();
     $("#chat-display").css("display", "flex");
+    $("footer").css("opacity", "0.2");
+    $("footer").css("font-size", "12px");
 
     user = {
       id: userID,
@@ -47,7 +49,7 @@ $("#connect").on("click", () => {
     $("#entryNotify").trigger("play");
     connectionNotify(user.name, true);
   } else {
-    alert("Seu nome deve possuir mais de 3 caracteres e menos que 16");
+    alert("Seu nome deve possuir mais de 2 caracteres e menos que 13");
   }
 });
 
@@ -220,3 +222,13 @@ document.querySelectorAll(".avatarButton").forEach((index, count) => {
     $(".avatar-options-container").hide();
   });
 });
+
+// $('#navBar').on('mouseover', function () {
+//   $(this).width(350)
+//   $(this).css('transform', 'translateX(0)')
+// })
+
+window.onresize = console.log(window.innerWidth);
+
+const year = document.querySelector("#ano");
+year.innerHTML = new Date().getFullYear();
