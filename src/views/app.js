@@ -23,8 +23,10 @@ $("#connect").on("click", () => {
   ) {
     $(".login-container").hide();
     $("#chat-display").css("display", "flex");
-    $("footer").css("opacity", "0.2");
-    $("footer").css("font-size", "12px");
+    $("footer").css({
+      opacity: 0.1,
+      "font-size": "12px",
+    });
 
     user = {
       id: userID,
@@ -49,7 +51,8 @@ $("#connect").on("click", () => {
     $("#entryNotify").trigger("play");
     connectionNotify(user.name, true);
   } else {
-    alert("Seu nome deve possuir mais de 2 caracteres e menos que 13");
+    $("#inputError").show();
+    $("#inputError").fadeTo(400, 1);
   }
 });
 
@@ -184,6 +187,7 @@ function createMessage(content, client, name, color) {
 }
 
 function userStatus(name, status) {
+  // Adiciona ou remove usuário da lista online
   if (status == true) {
     let username = document.createElement("p");
     username.innerHTML = name + ",";
@@ -196,13 +200,14 @@ function userStatus(name, status) {
 }
 
 $("#openOptions").on("click", () => {
+  // Abre o menu de avatar
   $(".avatar-options-container").css("display", "flex");
 });
 
 document.querySelectorAll(".avatarButton").forEach((index, count) => {
+  // Seleciona o avatar por click
   const picProfile = $("#picProfileDetails");
   $(index).on("click", () => {
-    console.log(count);
     switch (count) {
       case 0:
         $(picProfile).attr("src", "./imgs/avatarA.svg");
@@ -223,12 +228,35 @@ document.querySelectorAll(".avatarButton").forEach((index, count) => {
   });
 });
 
-// $('#navBar').on('mouseover', function () {
-//   $(this).width(350)
-//   $(this).css('transform', 'translateX(0)')
-// })
+let menuOpen = false;
+$("#menuSwitch").on("click", function () {
+  // Abrir ou fechar a navbar pelo botão responsivo mobile
+  if (menuOpen == false) {
+    $(this).css({
+      "background-color": "#fff",
+      color: "#7236fb",
+      transform: "rotate(180deg) scale(1.1)",
+    });
 
-window.onresize = console.log(window.innerWidth);
+    $(".navbar").width(305);
+    $(".navbar").css("transform", "translateX(0)");
+
+    menuOpen = true;
+  } else {
+    $(this).css({
+      "background-color": "transparent",
+      color: "#fff",
+      transform: "",
+    });
+
+    $(".navbar").width(120);
+    $(".navbar").css("transform", "translateX(-135px)");
+
+    menuOpen = false;
+  }
+});
 
 const year = document.querySelector("#ano");
 year.innerHTML = new Date().getFullYear();
+
+window.onresize = console.log(window.innerWidth);
