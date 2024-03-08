@@ -1,4 +1,4 @@
-const ws = new WebSocket("wss://live-chat-gs6d.onrender.com");
+const ws = new WebSocket("ws://localhost:8080");
 
 function randomColor() {
   const colors = [
