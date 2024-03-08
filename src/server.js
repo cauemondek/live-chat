@@ -4,9 +4,12 @@ const dotenv = require("dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const http = require("http");
 
 const app = express();
 app.use(express.json());
+
+const server = http.createServer(app);
 
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
@@ -14,7 +17,7 @@ app.set("views", path.join(__dirname, "/views"));
 
 app.use(express.static(__dirname + "/views"));
 
-const port = process.env.PORT_EXPRESS || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 dotenv.config();
@@ -22,7 +25,7 @@ dotenv.config();
 let onlineClientsUsername = {};
 let onlineClientsID = {};
 
-const wss = new WebSocketServer({ port: process.env.PORT_WS || 8080 });
+const wss = new WebSocketServer({ server });
 
 wss.on("connection", (ws, req) => {
   ws.id = crypto.randomUUID();
@@ -85,6 +88,6 @@ app.get("/", async (req, res) => {
   res.render("index.html");
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server running on port: " + port);
-});
+})
