@@ -11,7 +11,6 @@ app.use(express.json());
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 app.set("views", path.join(__dirname, "/views"));
-app.use(express.static("public"));
 
 app.use(express.static(__dirname + "/views"));
 
@@ -82,7 +81,7 @@ wss.on("connection", (ws, req) => {
   });
 });
 
-app.get("/chat", async (req, res) => {
+app.get("/", async (req, res) => {
   res.render("index.html");
 });
 
