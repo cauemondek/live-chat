@@ -1,23 +1,209 @@
+#menuSwitch {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    font-size: 27px;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    
+    margin: 12px 12px 0 0;
+    width: 45px;
+    height: 45px;
+
+    align-items: center;
+    display: none;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 2;
+
+    transition: .3s ease-in;
+}
+
 @media only screen and (max-width: 414px){ /* Mobile 1*/
     /* Design frame: 375px */
     
+    .initial-box img {
+        display: none;
+    }
+
+    .navbar {
+        transform: translateX(-135px);
+    }
+
+    .output-message {
+        width: 320px;
+        height: 450px;
+    }
+
+    .group-message, .send-message-container {
+        width: 320px;
+    }
+
+    .send-message-container input {
+        width: 250px;
+    } 
+
+    #menuSwitch {
+        display: flex;
+    }
+
+    .group-container {
+        height: 300px;
+    }
+
+    .initial-box h2 {
+        font-size: 22px;
+    }
+
+    .login-box {
+        width: 360px;
+    }
+
+    .input-form input {
+        width: 240px;
+    }
+
+    .login button {
+        width: 260px;
+    }
+
+    .connection {
+        max-width: 300px;
+        min-width: 180px;
+        width: max-content;
+    }
+
+    .login span {
+        font-size: 11px;
+    }
+
+    footer {
+        font-size: 11px;
+    }
 }
 
 @media only screen and (max-width: 600px) and (min-width: 415px){ /* Mobile 2 */
     /* Design frame: 510px */
 
+    .initial-box img {
+        display: none;
+    }
+
+    .navbar {
+        transform: translateX(-135px);
+    }
+
+    .output-message {
+        width: 390px;
+        height: 585px;
+    }
+
+    .group-message, .send-message-container {
+        width: 390px;
+    }
+
+    .send-message-container input {
+        width: 300px;
+    } 
+
+    #menuSwitch {
+        display: flex;
+    }
+
+    .group-container {
+        height: 330px;
+    }
+
+    .initial-box h2 {
+        font-size: 26px;
+    }
+
+    .login-box {
+        width: 400px;
+    }
+
+    .connection {
+        max-width: 300px;
+        min-width: 230px;
+        width: max-content;
+    }
+
+    footer {
+        font-size: 13px;
+    }
 }
 
-@media only screen and (max-width: 1279px) and (min-width: 601px){ /* Tablet */
+@media only screen and (max-width: 699px) and (min-width: 601px){ /* Tablet Mini */
+    /* Design frame: 640px */
+
+    .initial-box img {
+        display: none;
+    }
+
+    .navbar {
+        transform: translateX(-135px);
+    }
+
+    .output-message {
+        width: 550px;
+    }
+
+    .group-message, .send-message-container {
+        width: 550px;
+    }
+
+    #menuSwitch {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 1279px) and (min-width: 700px){ /* Tablet */
     /* Design frame: 768px */
 
+    .initial-box img {
+        display: none;
+    }
+
+    .navbar {
+        transform: translateX(-135px);
+    }
+
+    .output-message {
+        width: 660px;
+    }
+
+    .group-message, .send-message-container {
+        width: 660px;
+    }
+
+    #menuSwitch {
+        display: flex;
+    }
 }
 
 @media only screen and (max-width: 1366px) and (min-width: 1280px){ /* Small desktop */
     /* Design frame: 1280px */
 
-}
-@media only screen and (max-width: 1760px) and (min-width: 1280px){ /* Small desktop */
-    /* Design frame: 1280px */
+    .output-message {
+        width: 850px;
+    }
 
+    .group-message, .send-message-container {
+        width: 850px;
+    }
+}
+@media only screen and (max-width: 1651px) and (min-width: 1367px){ /* Medium desktop */
+    /* Design frame: 1650px and 1450px */
+
+    .output-message {
+        width: 1000px;
+    }
+
+    .group-message, .send-message-container {
+        width: 1000px;
+    }
 }
