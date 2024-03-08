@@ -9,10 +9,10 @@ main {
     
 }
 
+/* MAIN CONTAINERS /START */
 .chat-container {
     background-color: #0d1a46;
     border: 1px solid  #1b2956;;
-
 }
 
 .group-message, .send-message-container {
@@ -50,7 +50,9 @@ main {
     scroll-behavior: smooth;
     
 }
+/* MAIN CONTAINER /END */
 
+/* MESSAGE SYSTEM /START */
 .message {
     margin-top: 12px;
 
@@ -146,7 +148,9 @@ main {
         opacity: 1;
     }
 }
+/* MESSAGE SYSTEM /END */
 
+/* MESSAGE USER CONNECT OR LEFT /START */
 .new-connection-container {
     width: 100%;
     margin: 15px 0px;
@@ -199,14 +203,18 @@ main {
 
     }
 }
+/* MESSAGE USER CONNECT OR LEFT /END */
 
+/* GROUP DESCRIPTION /START */
 .group-name {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
-    width: 155px;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+}
+
+.group-name i {
+    margin-right: 8px;
 }
 
 .group-members {
@@ -230,12 +238,14 @@ main {
 .group-name h3, .group-name i {
     color: #92a8ce;
 }
+/* GROUP DESCRIPTION /END */
 
+/* NAVBAR /START */
 .navbar {
     height: 100%;
     width: 120px;
 
-    border-right: 1px solid #1b2956;
+    border-right: 2px solid #1b2956;
     background-color: #0c1b50;
     
     position: absolute;
@@ -245,8 +255,6 @@ main {
     z-index: 1;
 
     transition: .4s ease-in-out;
-    /* transform: translateX(-200px); */
-    
 }
 
 .navbar:hover {
@@ -310,7 +318,7 @@ hr {
 }
 
 .line p {
-    color: #8f5fff;
+    color: #7236fb;
 }
 
 .group-container {
@@ -323,15 +331,15 @@ hr {
 }
 
 .group {
-    width: max-content;
+    width: 310px;
     margin-bottom: 16px;
 }
 
 .button-container {
-    background-color: #3223b1;
     transition: .3s ease-in-out;
     cursor: pointer;
     color: #f5f5f5;
+    display: flex;
 }
 
 .button-container:hover {
@@ -360,13 +368,14 @@ hr {
     white-space: nowrap;
 }
 
-.fa-chevron-right{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
+.more {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
+/* NAVBAR /END */
 
+/* AVATAR SELECT WINDOW /START */
 .avatar-options-container {
     width: 100%;
     height: 100%;
@@ -404,11 +413,4 @@ hr {
     opacity: .4;
     transform: scale(0.9);
 }
-
-.more {
-    bottom: 0;
-    width: 100%;
-
-    position: absolute;
-    display: flex;
-}
+/* AVATAR SELECT WINDOW /END */
