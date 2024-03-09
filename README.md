@@ -37,13 +37,16 @@ node src/server.js
 ## ✔ Project features
 
 `✨ Feature 1`: Send messages in a public chat
+![messageUser](https://github.com/cauemondek/live-chat/assets/121320616/5eb100db-3dbf-40e8-ac77-242363ef77dd)
 
+`✨ Feature 2`: Notify and list when a user enter or left
+![connectUser](https://github.com/cauemondek/live-chat/assets/121320616/c3d4be42-731a-4542-94f7-7ae18c6f7a4b)
 
-`✨ Feature 2`: User Navbar
+`✨ Feature 3`: User Navbar
+![navBar](https://github.com/cauemondek/live-chat/assets/121320616/905c9257-e105-48e0-9c23-8ab21d64ae63)
 
-
-`✨ Feature 2a`: Menu to choose avatar pic
-
+`✨ Feature 3a`: Menu to choose avatar pic
+![menuAvatar](https://github.com/cauemondek/live-chat/assets/121320616/d88dc36b-fe46-4d2b-a59b-d34edf939b22)
 
 `✨ Feature 4`: Fully Responsive
 <br>
