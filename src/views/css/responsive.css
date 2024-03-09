@@ -26,6 +26,13 @@
 @media only screen and (max-width: 414px){ /* Mobile 1*/
     /* Design frame: 375px */
     
+    body {
+        width: 100vw;
+        height: 97vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
     .initial-box img {
         display: none;
     }
@@ -35,12 +42,12 @@
     }
 
     .output-message {
-        width: 320px;
-        height: 450px;
+        width: 300px;
+        height: 400px;
     }
 
     .group-message, .send-message-container {
-        width: 320px;
+        width: 300px;
     }
 
     .send-message-container input {
@@ -49,6 +56,10 @@
 
     #menuSwitch {
         display: flex;
+    }
+
+    .navbar ul {
+        height: 93vh;
     }
 
     .group-container {
@@ -63,8 +74,12 @@
         width: 360px;
     }
 
+    .login {
+        width: 320px;
+    }
+
     .input-form input {
-        width: 240px;
+        width: 220px;
     }
 
     .login button {
@@ -89,6 +104,13 @@
 @media only screen and (max-width: 600px) and (min-width: 415px){ /* Mobile 2 */
     /* Design frame: 510px */
 
+    body {
+        width: 100vw;
+        height: 97vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
     .initial-box img {
         display: none;
     }
@@ -97,13 +119,17 @@
         transform: translateX(-135px);
     }
 
+    .navbar ul {
+        height: 93vh;
+    }
+
     .output-message {
-        width: 390px;
-        height: 585px;
+        width: 375px;
+        height: 565px;
     }
 
     .group-message, .send-message-container {
-        width: 390px;
+        width: 385px;
     }
 
     .send-message-container input {
@@ -115,7 +141,7 @@
     }
 
     .group-container {
-        height: 330px;
+        height: 325px;
     }
 
     .initial-box h2 {
@@ -126,6 +152,11 @@
         width: 400px;
     }
 
+    .login {
+        width: 320px;
+    }
+
+    
     .connection {
         max-width: 300px;
         min-width: 230px;
@@ -140,6 +171,13 @@
 @media only screen and (max-width: 699px) and (min-width: 601px){ /* Tablet Mini */
     /* Design frame: 640px */
 
+    body {
+        width: 100vw;
+        height: 97vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
     .initial-box img {
         display: none;
     }
@@ -163,6 +201,13 @@
 
 @media only screen and (max-width: 1279px) and (min-width: 700px){ /* Tablet */
     /* Design frame: 768px */
+
+    body {
+        width: 100vw;
+        height: 97vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
 
     .initial-box img {
         display: none;
