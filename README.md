@@ -5,7 +5,7 @@
 
 ## 📁 How access the project
 
-**You can download it and initialize it on your system or acess this [page](https://bank-api-2img.onrender.com/login)**
+**You can download it and initialize it on your system or acess this [page](https://live-chat-gs6d.onrender.com/)** (the link sometimes have 50s delay to open)
 
 ## 🛠️ Open and run the project
 
@@ -21,7 +21,7 @@ node src/server.js
 ```
 - **Go to your browser and enter in `localhost:3000/` (3000 or other appear on terminal)**
 
-**You can acess [this website](https://bank-api-2img.onrender.com/login) if you don't want download**
+**You can acess [this website](https://live-chat-gs6d.onrender.com/) if you don't want download**
 
 ## 🔨 Built with
 - ``HTML/CSS``
