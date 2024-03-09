@@ -23,10 +23,7 @@ $("#connect").on("click", () => {
   ) {
     $(".login-container").hide();
     $("#chat-display").css("display", "flex");
-    $("footer").css({
-      opacity: 0.1,
-      "font-size": "12px",
-    });
+    $("footer").hide();
 
     user = {
       id: userID,
