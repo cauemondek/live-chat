@@ -47,5 +47,5 @@ node src/server.js
 
 `✨ Feature 4`: Fully Responsive
 <br>
-<img src="" style="width: 65%"><img>
-<img src="" style="width: 30%"><img>
+<img src="https://github.com/cauemondek/live-chat/assets/121320616/0979c086-c886-44b7-a332-d1598ba767ef" style="width: 15%"><img>
+<img src="https://github.com/cauemondek/live-chat/assets/121320616/85476b6a-76ab-4787-aa21-e5fc57325a16" style="width: 65%"><img>
